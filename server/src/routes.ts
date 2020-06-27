@@ -1,10 +1,20 @@
 import express from 'express';
+import knex from './database/connection';
 
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-  const search = String(req.query.search);
-  return res.json({message: 'ok'});
+routes.get('/items', async (req, res) => {
+  const items = await knex('items').select('*');
+
+  const serializedItems = items.map(item => {
+    return {
+      id: item.id,
+      title: item.title,
+      image_url: `http://localhost:3333/uploads/${item.image}`
+    };
+  });
+  
+  return res.json(serializedItems);
 });
 
 // routes.get('/users/:id', (req, res) => {
@@ -12,10 +22,31 @@ routes.get('/', (req, res) => {
 //   return res.json({message: 'ok'});
 // });
 
-// routes.post('/users', (req, res) => {
-//   const data = req.body;
-//   const user = {name: data.name, email: data.email};
-//   return res.json(user);
-// });
+routes.post('/points', async (req, res) => {
+  const {
+    name,
+    email,
+    whatsapp,
+    latitude,
+    longitude,
+    city,
+    uf,
+    items
+  } = req.body;
+
+  await knex('points').insert({
+    image: 'image-fake.svg',
+    name,
+    email,
+    whatsapp,
+    latitude,
+    longitude,
+    city,
+    uf,
+  });
+
+  return res.json({success: true})
+  
+});
 
 export default routes;
