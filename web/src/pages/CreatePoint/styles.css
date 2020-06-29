@@ -200,4 +200,49 @@
 .items-grid li.selected {
   background: #E1FAEC;
   border: 2px solid #34CB79;
+  box-shadow: 0 0 5px 1px #00000055;
+}
+
+.items-grid li:hover {
+  box-shadow: 0 0 5px 1px #00000055;
+}
+
+#mensagem-sucesso {
+  z-index: 1001;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0,0,0, 0.87);
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  visibility: hidden;
+}
+
+#mensagem-sucesso h4 {
+  color: #FFF;
+  font-size: 27px;
+  margin: 30px 0;
+}
+
+#mensagem-sucesso.visible {
+  visibility: visible;
+}
+
+#mensagem-sucesso a {
+  color: #FFF;
+  font-weight: bold;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+}
+
+#mensagem-sucesso a svg {
+  margin-right: 5px;
+  color: var(--primary-color);
 }
