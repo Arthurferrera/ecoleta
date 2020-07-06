@@ -20,8 +20,9 @@ const Points = () => {
 
   useEffect(() => {
     api.get('items').then(res => {
-      console.log(res);
       setItems(res.data);
+    }).catch((e) => {
+      console.log('Erro de conexão');
     });
   }, [])
 
@@ -88,7 +89,10 @@ const Points = () => {
           {items.map(item => (
             <TouchableOpacity 
               key={String(item.id)} 
-              style={styles.item} 
+              style={[
+                styles.item,
+                selectedItems.includes(item.id) ? styles.selectedItem : {}
+              ]} 
               onPress={() => handleSelectItem(item.id)}
               activeOpacity={0.6}
             >
