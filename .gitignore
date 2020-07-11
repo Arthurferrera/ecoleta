@@ -1,1 +1,5 @@
 /server/node_modules
+/server/uploads/images_server/*
+!/server/uploads/images_server/.gitkeep
+
+*.sqlite
