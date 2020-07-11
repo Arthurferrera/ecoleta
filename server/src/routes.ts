@@ -13,6 +13,12 @@ const upload = multer(multerConfig);
 const pointsController = new PointsController();
 const itemsController = new ItemsController();
 
+// VALIDAÇÃO REGEX 
+// O ^ checa desde o inicio
+// O $ checa a partir do final
+// O \d checa números
+// Tudo que estiver dentro de [...] será considerado, independente da posição
+
 routes.post('/points',
   upload.single('image'),
   celebrate({
