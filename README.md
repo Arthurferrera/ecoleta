@@ -66,7 +66,7 @@ Abaixo está um exemplo da home e página onde é localizado os pontos de coleta
 1. Faça um clone :
 
 ```sh
-  $ git clone https://github.com/Arthurferrera/ecoleta
+  $ git clone https://github.com/Arthurferrera/ecoleta.git
 ```
 
 2. Para executar a Aplicação execute os seguintes comandos:
